@@ -15,16 +15,19 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
-            {
+            // Implementado!!!
+
+            if (Suite.Capacidade> hospedes.Count ) {
                 Hospedes = hospedes;
             }
-            else
-            {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+            else {
+                
+                try {
+                    throw new Exception();
+                }
+                catch(Exception ex) {
+                    Console.WriteLine($"Ocorreu um erro. A capacidade da suite é menor que o número de pessoas. "+ ex.Message);
+                }   
             }
         }
 
@@ -35,23 +38,25 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
+            // Implementado!!!
+            
+          if(Hospedes != null) {
+            return Hospedes.Count;
+          }
             return 0;
         }
 
-        public decimal CalcularValorDiaria()
-        {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
+       public decimal CalcularValorDiaria()
+       {
+            // Implementado!!!
+            
             decimal valor = 0;
+            valor = DiasReservados * Suite.ValorDiaria;
 
-            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+
+            if (DiasReservados >= 10)
             {
-                valor = 0;
+                valor = valor-(valor*0.10M);
             }
 
             return valor;
